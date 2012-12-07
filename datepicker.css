@@ -1,0 +1,9 @@
+#ui-datepicker-div {
+  z-index: 9999999!important;
+}
+
+#popupdatepicker {
+    height:280px;
+    width: 310px;
+}
+
