@@ -4,12 +4,7 @@ function copy(str) {
     sandbox.val('');
 }
 
-function paste() {
-    var result = '',
-        sandbox = $('#clipboard').val('').select();
-    if (document.execCommand('paste')) {
-        result = $("#sandbox").val();
-    }
-    sandbox.val('');
-    return result;
-}
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    if (request.method == "getDate_format")
+      sendResponse({date_format: localStorage['date_format']});
+});

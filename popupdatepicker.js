@@ -6,15 +6,12 @@ $(function() {
         window.close();
     });
 
-    var df='dd/mm/yy';
-    var language = navigator.language || navigator.browserLanguage || navigator.userLanguage || 'en';
+    chrome.extension.sendRequest({method: "getDate_format"}, function(response) {
+      var df = response.date_format;
 
-    if (language=='en-US' || language=='en' ) {
-        df='mm/dd/yy';
-    }
+        $('#datepicker').datepicker({'constrainInput':false, 'dateFormat': df });
 
-    $('#datepicker').datepicker({'constrainInput':false, 'dateFormat': df });
-
-    $('#datepicker').datepicker('show');
+        $('#datepicker').datepicker('show');
+    })
 
 });
